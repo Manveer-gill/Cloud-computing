@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subnetting Practice Tool</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f9;
+        color: #333;
+        line-height: 1.6;
+    }
+    header {
+        background-color: #17365d;
+        color: white;
+        padding: 25px 8%;
+    }
+    header h1 {
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
+    header p {
+        color: #dce6f1;
+        font-size: 15px;
+    }
+    nav {
+        background-color: #24476b;
+        padding: 13px 8%;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin-right: 25px;
+        font-size: 15px;
+    }
+    nav a:hover {
+        text-decoration: underline;
+    }
+    .container {
+        width: 84%;
+        max-width: 1100px;
+        margin: 30px auto;
+    }
+    .welcome {
+        background-color: white;
+        padding: 35px;
+        border-left: 5px solid #2e75b6;
+        margin-bottom: 25px;
+    }
+    .welcome h2 {
+        color: #17365d;
+        margin-bottom: 12px;
+        font-size: 27px;
+    }
+    .welcome p {
+        margin-bottom: 15px;
+    }
+    .button {
+        display: inline-block;
+        background-color: #2e75b6;
+        color: white;
+        padding: 10px 18px;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-top: 8px;
+    }
+    .button:hover {
+        background-color: #17365d;
+    }
+    .card {
+        background-color: white;
+        padding: 25px;
+        margin-bottom: 25px;
+        border: 1px solid #e0e5eb;
+        border-radius: 5px;
+    }
+    h2 {
+        color: #17365d;
+        margin-bottom: 15px;
+    }
+    h3 {
+        color: #24476b;
+        margin: 15px 0 8px;
+    }
+    p {
+        margin-bottom: 10px;
+    }
+    ul, ol {
+        margin-left: 25px;
+        margin-bottom: 15px;
+    }
+    li {
+        margin-bottom: 6px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+    th, td {
+        border: 1px solid #d5dce5;
+        padding: 11px;
+        text-align: left;
+    }
+    th {
+        background-color: #24476b;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f1f5f9;
+    }
+    .example {
+        background-color: #edf4fb;
+        padding: 18px;
+        margin-top: 15px;
+        border-left: 4px solid #2e75b6;
+    }
+    .question {
+        padding: 15px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .question:last-child {
+        border-bottom: none;
+    }
+    .question label {
+        display: block;
+        margin: 7px 0;
+        cursor: pointer;
+    }
+    .check-button {
+        background-color: #17365d;
+        color: white;
+        border: none;
+        padding: 11px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 15px;
+        margin-top: 15px;
+    }
+    .check-button:hover {
+        background-color: #2e75b6;
+    }
+    #result {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+    footer {
+        background-color: #17365d;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 35px;
+    }
+    footer p {
+        margin: 0;
+    }
+    @media (max-width: 600px) {
+        header {
+            padding: 22px 5%;
+        }
+        header h1 {
+            font-size: 25px;
+        }
+        nav {
+            padding: 12px 5%;
+        }
+        nav a {
+            display: inline-block;
+            margin: 5px 12px 5px 0;
+        }
+        .container {
+            width: 92%;
+        }
+        .welcome, .card {
+            padding: 20px;
+        }
+        table {
+            font-size: 13px;
+        }
+        th, td {
+            padding: 7px;
+        }
+    }
+</style>
+</head>
+<body>
+<header id="home">
+    <h1>Subnetting Practice Tool</h1>
+    <p>A simple guide to understanding IP subnetting</p>
+</header>
+<nav>
+    <a href="#home">Home</a>
+    <a href="#introduction">Introduction</a>
+    <a href="#subnet-masks">Subnet Masks</a>
+    <a href="#examples">Examples</a>
+    <a href="#practice">Practice</a>
+</nav>
+<main class="container">
+    <section class="welcome">
+        <h2>Welcome to Subnetting Practice Tool</h2>
+        <p>
+            Subnetting is an important concept in computer networking.
+            This website provides basic information, subnet mask tables,
+            solved examples and practice questions to help students
+            understand the topic.
+        </p>
+        <p>
+            It is designed for beginners who want to learn IPv4
+            subnetting in a simple and practical way.
+        </p>
+        <a href="#introduction" class="button">Start Learning</a>
+    </section>
+    <section class="card" id="introduction">
+        <h2>1. Introduction to Subnetting</h2>
+        <p>
+            Subnetting is the process of dividing a large IP network
+            into smaller networks called subnets. It helps network
+            administrators manage IP addresses and organise devices
+            more efficiently.
+        </p>
+        <h3>What is an IP Address?</h3>
+        <p>
+            An IP address is a logical address used to identify a
+            device on a network. An IPv4 address contains 32 bits
+            and is normally written as four decimal numbers
+            separated by dots.
+        </p>
+        <p><strong>Example:</strong> 192.168.1.10</p>
+        <h3>Why is Subnetting Used?</h3>
+        <ul>
+            <li>To divide a large network into smaller networks.</li>
+            <li>To use IP addresses more efficiently.</li>
+            <li>To organise devices into separate network segments.</li>
+            <li>To make network management easier.</li>
+            <li>To help control broadcast traffic within a network.</li>
+        </ul>
+        <h3>What is a Subnet Mask?</h3>
+        <p>
+            A subnet mask identifies the network portion and host
+            portion of an IPv4 address. For example, the subnet mask
+            255.255.255.0 is equivalent to the CIDR prefix /24.
+        </p>
+    </section>
+    <section class="card" id="subnet-masks">
+        <h2>2. Common IPv4 Subnet Masks</h2>
+        <p>
+            The following table shows some commonly used IPv4
+            subnet masks and their address capacities.
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>CIDR Prefix</th>
+                    <th>Subnet Mask</th>
+                    <th>Total Addresses</th>
+                    <th>Usable Hosts*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>/24</td>
+                    <td>255.255.255.0</td>
+                    <td>256</td>
+                    <td>254</td>
+                </tr>
+                <tr>
+                    <td>/25</td>
+                    <td>255.255.255.128</td>
+                    <td>128</td>
+                    <td>126</td>
+                </tr>
+                <tr>
+                    <td>/26</td>
+                    <td>255.255.255.192</td>
+                    <td>64</td>
+                    <td>62</td>
+                </tr>
+                <tr>
+                    <td>/27</td>
+                    <td>255.255.255.224</td>
+                    <td>32</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>/28</td>
+                    <td>255.255.255.240</td>
+                    <td>16</td>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <td>/29</td>
+                    <td>255.255.255.248</td>
+                    <td>8</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>/30</td>
+                    <td>255.255.255.252</td>
+                    <td>4</td>
+                    <td>2</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="margin-top: 12px; font-size: 13px;">
+            *Usable host counts assume conventional IPv4 subnets,
+            excluding the network and broadcast addresses.
+            Special cases such as /31 and /32 are not shown.
+        </p>
+    </section>
+    <section class="card" id="examples">
+        <h2>3. Solved Subnetting Examples</h2>
+        <div class="example">
+            <h3>Example 1: Find the usable hosts in /26</h3>
+            <p><strong>Step 1:</strong> Find the host bits.</p>
+            <p>Host bits = 32 - 26 = 6</p>
+            <p><strong>Step 2:</strong> Calculate total addresses.</p>
+            <p>2<sup>6</sup> = 64 addresses</p>
+            <p><strong>Step 3:</strong> Calculate usable hosts.</p>
+            <p>64 - 2 = 62 usable host addresses</p>
+            <p><strong>Answer:</strong> 62 usable hosts.</p>
+        </div>
+        <div class="example">
+            <h3>Example 2: Find the subnet mask for /27</h3>
+            <p>
+                The CIDR prefix /27 means that 27 bits are used
+                for the network portion of the address.
+            </p>
+            <p><strong>Subnet Mask:</strong> 255.255.255.224</p>
+            <p>
+                Host bits = 32 - 27 = 5
+            </p>
+            <p>
+                Total addresses = 2<sup>5</sup> = 32
+            </p>
+            <p>
+                Usable host addresses = 32 - 2 = 30
+            </p>
+        </div>
+        <div class="example">
+            <h3>Example 3: Find the network address</h3>
+            <p><strong>IP Address:</strong> 192.168.1.70</p>
+            <p><strong>Subnet Mask:</strong> 255.255.255.192 (/26)</p>
+            <p><strong>Block Size:</strong> 256 - 192 = 64</p>
+            <p>
+                The subnet ranges in the last octet are 0-63,
+                64-127, 128-191 and 192-255.
+            </p>
+            <p>
+                Since 70 lies between 64 and 127, the network
+                address is 192.168.1.64.
+            </p>
+            <p><strong>Answer:</strong> 192.168.1.64</p>
+        </div>
+    </section>
+    <section class="card" id="practice">
+        <h2>4. Subnetting Practice Quiz</h2>
+        <p>
+            Select an answer for each question and click
+            the button to check your score.
+        </p>
+        <form id="quiz">
+            <div class="question">
+                <p><strong>Q1. How many bits are in an IPv4 address?</strong></p>
+                <label>
+                    <input type="radio" name="q1" value="a">
+                    16 bits
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="b">
+                    32 bits
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="c">
+                    64 bits
+                </label>
+            </div>
+            <div class="question">
+                <p><strong>Q2. What is the subnet mask for /24?</strong></p>
+                <label>
+                    <input type="radio" name="q2" value="a">
+                    255.255.0.0
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="b">
+                    255.0.0.0
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="c">
+                    255.255.255.0
+                </label>
+            </div>
+            <div class="question">
+                <p><strong>Q3. How many usable hosts are in a /27 subnet?</strong></p>
+                <label>
+                    <input type="radio" name="q3" value="a">
+                    30
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="b">
+                    32
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="c">
+                    62
+                </label>
+            </div>
+            <div class="question">
+                <p><strong>Q4. What is the main purpose of subnetting?</strong></p>
+                <label>
+                    <input type="radio" name="q4" value="a">
+                    To increase monitor resolution
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="b">
+                    To divide a network into smaller networks
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="c">
+                    To increase the speed of the CPU
+                </label>
+            </div>
+            <div class="question">
+                <p><strong>Q5. How many total addresses are in a /26 subnet?</strong></p>
+                <label>
+                    <input type="radio" name="q5" value="a">
+                    32
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="b">
+                    128
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="c">
+                    64
+                </label>
+            </div>
+            <button type="button" class="check-button" onclick="checkAnswers()">
+                Check Answers
+            </button>
+            <p id="result" aria-live="polite"></p>
+        </form>
+    </section>
+    <section class="card" id="about">
+        <h2>5. About This Project</h2>
+        <p>
+            The Subnetting Practice Tool is an educational website
+            developed as part of a Cloud Computing project.
+            Its purpose is to help students learn the fundamentals
+            of IPv4 subnetting through explanations, tables,
+            examples and a practice quiz.
+        </p>
+        <h3>Technologies Used</h3>
+        <ul>
+            <li>HTML5 - for the structure of the website.</li>
+            <li>CSS3 - for styling and page layout.</li>
+            <li>JavaScript - for checking quiz answers.</li>
+            <li>Cloud Hosting - to publish the website online.</li>
+        </ul>
+    </section>
+</main>
+<footer>
+    <p>Subnetting Practice Tool | Cloud Computing Project</p>
+    <p>Learn Networking One Subnet at a Time</p>
+</footer>
+<script>
+    function checkAnswers() {
+        const answers = {
+            q1: "b",
+            q2: "c",
+            q3: "a",
+            q4: "b",
+            q5: "c"
+        };
+        let score = 0;
+        let total = Object.keys(answers).length;
+        for (let question in answers) {
+            const selected = document.querySelector(
+                'input[name="' + question + '"]:checked'
+            );
+            if (selected && selected.value === answers[question]) {
+                score++;
+            }
+        }
+        const result = document.getElementById("result");
+        result.textContent =
+            "Your score: " + score + " out of " + total + ".";
+        if (score === total) {
+            result.textContent += " Excellent! All answers are correct.";
+        } else {
+            result.textContent += " Review the examples and try again.";
+        }
+    }
+</script>
+</body>
+</html>
